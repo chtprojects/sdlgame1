@@ -16,10 +16,6 @@ Uint32 poolSpawnDelay = 5000;
 
 static void spawn_enemy(Enemy *enemies, V2 pool) {
   Enemy_spawn(pool, enemies);
-  // Enemy_spawn(pool.x-20,pool.y-20,enemies);
-  // Enemy_spawn(pool.x-40,pool.y-40,enemies);
-  // Enemy_spawn(pool.x-60,pool.y-60,enemies);
-  // Enemy_spawn(pool.x-80,pool.y-80,enemies);
 };
 
 void Enemies_pool_init_round(int round, Config *config) {

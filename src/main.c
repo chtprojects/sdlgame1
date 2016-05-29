@@ -162,6 +162,7 @@ int initialize_systems() {
 void update_objects() {
   Player_update(&config->players[0], config->window_width,
                 config->window_height);
+  Enemies_pool_update(config->enemies);
   Enemy_update(config->enemies, config->players, config->activePlayers);
 
   if (config->players[0].isShooting) {

@@ -19,4 +19,5 @@ void init_game(Config *c) {
   // init_player(c,GAMEPAD,c->window_width*3.0/5.0,c->window_height*1.0/5.0 );
   V2 playerCenter = (V2){c->window_width / 2.0, c->window_height / 2.0};
   init_player(c, KEYBOARD, playerCenter);
+  Enemies_pool_init_round(0, c);
 }
