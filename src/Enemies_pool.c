@@ -5,35 +5,14 @@
 #include "Enemies_pool.h"
 #include "Enemy.h"
 #include "globals.h"
-#ifdef __MACH__
-#include <mach/clock.h>
-#include <mach/mach.h>
-#endif
+#include <SDL2/SDL.h>
 
 V2 pools[4];
 
-long long enemyLastSpawn;
-long long poolLastSpawn;
-long long enemySpawnDelay = 1000 * 1000000;
-long long poolSpawnDelay = 5000 * 1000000;
-
-///////////////////////////////////SHOULD BE GLOBAL
-static long long get_nanos() {
-  struct timespec ts;
-
-#ifdef __MACH__ // OS X does not have clock_gettime, use clock_get_time
-  clock_serv_t cclock;
-  mach_timespec_t mts;
-  host_get_clock_service(mach_host_self(), CALENDAR_CLOCK, &cclock);
-  clock_get_time(cclock, &mts);
-  mach_port_deallocate(mach_task_self(), cclock);
-  ts.tv_sec = mts.tv_sec;
-  ts.tv_nsec = mts.tv_nsec;
-#else
-  timespec_get(&ts, TIME_UTC);
-#endif
-  return (long long)ts.tv_sec * 1000000000L + ts.tv_nsec;
-}
+Uint32 enemyLastSpawn;
+Uint32 poolLastSpawn;
+Uint32 enemySpawnDelay = 1000;
+Uint32 poolSpawnDelay = 5000;
 
 static void spawn_enemy(Enemy *enemies, V2 pool) {
   Enemy_spawn(pool, enemies);
@@ -59,7 +38,7 @@ void Enemies_pool_init_round(int round, Config *config) {
 
 void Enemies_pool_update(Enemy *enemies) {
 
-  long long current = get_nanos();
+  Uint32 current = SDL_GetTicks();
   if (current - enemyLastSpawn > enemySpawnDelay) {
     spawn_enemy(enemies, pools[rand() % 4]);
     enemyLastSpawn = current;

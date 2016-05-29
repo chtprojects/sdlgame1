@@ -4,13 +4,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-#include <sys/time.h>
-
-#ifdef __MACH__
-#include <mach/clock.h>
-#include <mach/mach.h>
-#endif
 
 #define PI 3.14159265
 
@@ -18,23 +11,6 @@ static int TINY_COUNT = 3;
 static int SMALL_COUNT = 10;
 static int MEDIUM_COUNT = 30;
 static int BIG_COUNT = 50;
-
-static long get_nanos() {
-  struct timespec ts;
-
-#ifdef __MACH__ // OS X does not have clock_gettime, use clock_get_time
-  clock_serv_t cclock;
-  mach_timespec_t mts;
-  host_get_clock_service(mach_host_self(), CALENDAR_CLOCK, &cclock);
-  clock_get_time(cclock, &mts);
-  mach_port_deallocate(mach_task_self(), cclock);
-  ts.tv_sec = mts.tv_sec;
-  ts.tv_nsec = mts.tv_nsec;
-#else
-  timespec_get(&ts, TIME_UTC);
-#endif
-  return (long)ts.tv_sec * 1000000000L + ts.tv_nsec;
-}
 
 extern Config *config;
 
@@ -120,7 +96,7 @@ void Explosion_spawn(V2 topLeft, Explosion *explosions, ExplosionType type) {
     break;
   }
 
-  long creationTime = get_nanos();
+  Uint32 creationTime = SDL_GetTicks();
 
   int i = 0;
   for (i = 0; i < e.particlesCount; i++) {
@@ -142,7 +118,7 @@ void Explosion_spawn(V2 topLeft, Explosion *explosions, ExplosionType type) {
 void Explosion_update(Explosion *explosions, int width, int height) {
   int i = 0;
 
-  long current = get_nanos();
+  Uint32 current = SDL_GetTicks();
 
   for (i = 0; i < config->explosionsCount; i++) {
     int j;
