@@ -5,6 +5,6 @@
 #include "globals.h"
 
 void Enemies_pool_update(Enemy *enemies);
-void Enemies_pool_init_round(int round, Config* config);
+void Enemies_pool_init_round(int round, Config *config);
 
 #endif

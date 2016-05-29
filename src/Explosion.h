@@ -3,33 +3,29 @@
 
 #include "Geometry.h"
 
+typedef struct Particle {
+  V2 position;
+  float size;
+  float speed;
+  float moveX;
+  float moveY;
 
+  // index in particles array
+  long creationTime;
+  long lifeTime;
 
-typedef struct Particle{
- V2 position;
- float size;
- float speed;
- float moveX;
- float moveY;
+} Particle;
 
- //index in particles array
- long creationTime;
- long lifeTime;
+typedef enum { TINY, SMALL, MEDIUM, BIG, SPIRAL } ExplosionType;
 
-}  Particle;
+typedef struct Explosion {
 
-typedef enum {TINY,SMALL, MEDIUM, BIG, SPIRAL} ExplosionType;
-
-typedef struct Explosion{
- 
- Particle particles[50];
- ExplosionType type;
- //count of particles in this explosion
- int particlesCount;
+  Particle particles[50];
+  ExplosionType type;
+  // count of particles in this explosion
+  int particlesCount;
 
 } Explosion;
-
-
 
 void Explosion_render(Explosion *explosions);
 void Explosion_update(Explosion *explosions, int width, int height);

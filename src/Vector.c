@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "Vector.h"
 
-
 void vector_init(Vector *vector) {
   // initialize size and capacity
   vector->size = 0;
@@ -18,7 +17,6 @@ void vector_append(Vector *vector, float value) {
 
   // append the value and increment vector->size
   vector->data[vector->size++] = value;
-
 }
 
 float vector_get(Vector *vector, int index) {
@@ -37,7 +35,6 @@ void vector_set(Vector *vector, int index, float value) {
 
   // set the value at the desired index
   vector->data[index] = value;
-	
 }
 
 void vector_double_capacity_if_full(Vector *vector) {
@@ -48,7 +45,4 @@ void vector_double_capacity_if_full(Vector *vector) {
   }
 }
 
-void vector_free(Vector *vector) {
-  free(vector->data);
-}
-
+void vector_free(Vector *vector) { free(vector->data); }

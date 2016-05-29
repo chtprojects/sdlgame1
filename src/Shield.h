@@ -9,19 +9,17 @@
 #ifndef Shield_h
 #define Shield_h
 
-
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 
 #include "Geometry.h"
 
-
 typedef struct shield {
-    V2 center;
-    V2 vel;
-    GLfloat radius;
-    Collision_box cboxes[16];
-    int used;
+  V2 center;
+  V2 vel;
+  GLfloat radius;
+  Collision_box cboxes[16];
+  int used;
 } Shield;
 
 // Return an initialized shield object centered

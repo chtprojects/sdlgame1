@@ -2,9 +2,9 @@
 
 // Define a vector type
 typedef struct {
-  int size;      // slots used so far
-  int capacity;  // total available slots
-  float *data;     // array of floats we're storing
+  int size;     // slots used so far
+  int capacity; // total available slots
+  float *data;  // array of floats we're storing
 } Vector;
 
 void vector_init(Vector *vector);

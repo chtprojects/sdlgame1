@@ -5,5 +5,4 @@
 
 void collision_detection();
 
-
 #endif

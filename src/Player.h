@@ -12,19 +12,19 @@
 #include "Geometry.h"
 #include "Weapons.h"
 
-typedef enum {KEYBOARD,TOUCH, GAMEPAD} ControlsType;
+typedef enum { KEYBOARD, TOUCH, GAMEPAD } ControlsType;
 
 typedef struct s_player {
-    // implementation data
-    int health;
-    ControlsType controlsType;
-    int controllerId;
-    int isShooting;
-    V2 speed;
-    int move;
-    V2 vel;
-    Weapon weapon;
-    Collision_box box;    
+  // implementation data
+  int health;
+  ControlsType controlsType;
+  int controllerId;
+  int isShooting;
+  V2 speed;
+  int move;
+  V2 vel;
+  Weapon weapon;
+  Collision_box box;
 } Player;
 
 Player Player_init(V2 center, double width, double height);

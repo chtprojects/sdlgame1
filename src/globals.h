@@ -8,10 +8,8 @@
 #include "Enemy.h"
 #include "Player.h"
 
-
-typedef struct Config
-{
- Bullet bullets[200];
+typedef struct Config {
+  Bullet bullets[200];
   Uint32 bulletsCount;
   Explosion explosions[200];
   Uint32 explosionsCount;
@@ -25,6 +23,6 @@ typedef struct Config
   int activePlayers;
 } Config;
 
-Config* init_config();
+Config *init_config();
 
 #endif
