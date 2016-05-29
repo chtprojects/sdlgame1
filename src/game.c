@@ -1,5 +1,6 @@
 #include "Geometry.h"
 #include "globals.h"
+#include "Enemies_pool.h"
 
 #include <SDL2/SDL.h>
 #include <stdio.h>

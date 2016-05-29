@@ -76,23 +76,23 @@ void Explosion_spawn(V2 topLeft, Explosion *explosions, ExplosionType type) {
   case TINY:
     e.particlesCount = TINY_COUNT;
     maxSpeed = 2;
-    maxLifeTime = 2 * 1E9;
+    maxLifeTime = 2000;
     break;
   case SMALL:
     e.particlesCount = SMALL_COUNT;
     maxSpeed = 7;
-    maxLifeTime = 4 * 1E9;
+    maxLifeTime = 4000;
     break;
   case MEDIUM:
     e.particlesCount = MEDIUM_COUNT;
     maxSpeed = 10;
-    maxLifeTime = 8 * 1E9;
+    maxLifeTime = 8000;
     break;
   case BIG:
   case SPIRAL:
     e.particlesCount = BIG_COUNT;
     maxSpeed = 20;
-    maxLifeTime = 10 * 1E9;
+    maxLifeTime = 10000;
     break;
   }
 

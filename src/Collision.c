@@ -98,12 +98,11 @@ static col_order ENEMY_SHIELD_COL(int a, int b) {
 }
 
 void player_hit(int p) {
-  config->players[p].health -= 10; // cautionary tale about mod 2^32
-  if (config->players[p].health == 0) {
-    config->players[p] = config->players[config->activePlayers - 1];
-    config->activePlayers--;
-    SDL_Log("player %d died\n", p);
-  }
+  // do something less severe...a
+  config->players[p] = config->players[config->activePlayers - 1];
+  config->activePlayers--;
+  SDL_Log("player %d died\n", p);
+  exit(0);
 }
 
 void collision_detection() {

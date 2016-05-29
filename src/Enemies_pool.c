@@ -11,8 +11,8 @@ V2 pools[4];
 
 Uint32 enemyLastSpawn;
 Uint32 poolLastSpawn;
-Uint32 enemySpawnDelay = 1000;
-Uint32 poolSpawnDelay = 5000;
+Uint32 enemySpawnDelay = 500;
+Uint32 poolSpawnDelay = 1000;
 
 static void spawn_enemy(Enemy *enemies, V2 pool) {
   Enemy_spawn(pool, enemies);
