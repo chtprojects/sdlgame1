@@ -5,7 +5,7 @@ void Weapon_get(Weapon *weapon, WeaponType type) {
   case BASIC:
     weapon->bulletSpeed = 1;
     weapon->bulletSize = 2;
-    weapon->delay = 1000; // 1sec
+    weapon->delay = 300;
     weapon->lastShoot = 0;
     weapon->damage = 1;
     weapon->type = BASIC;
@@ -21,7 +21,7 @@ void Weapon_get(Weapon *weapon, WeaponType type) {
   case SHOOTGUN:
     weapon->bulletSpeed = 3;
     weapon->bulletSize = 5;
-    weapon->delay = 1000; // 1sec
+    weapon->delay = 500;
     weapon->lastShoot = 0;
     weapon->damage = 2;
     weapon->type = SHOOTGUN;
@@ -29,7 +29,7 @@ void Weapon_get(Weapon *weapon, WeaponType type) {
   case ROCKET:
     weapon->bulletSpeed = 4;
     weapon->bulletSize = 20;
-    weapon->delay = 5000; // 5sec
+    weapon->delay = 2000;
     weapon->lastShoot = 0;
     weapon->damage = 5;
     weapon->type = ROCKET;
