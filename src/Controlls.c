@@ -48,8 +48,8 @@ void set_movement_from_keys(Config *c) {
   static V2 right = {1, 0};
   static V2 up = {0, -1};
   static V2 down = {0, 1};
-  int i;
-  for (i = 0; i < c->activePlayers; i++) {
+
+  for (int i = 0; i < c->activePlayers; i++) {
     if (c->players[i].controlsType == KEYBOARD) {
       if (leftKeyPressed && upKeyPressed)
         Player_move(&c->players[i], leftUp);

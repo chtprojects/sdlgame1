@@ -7,6 +7,7 @@
 
 extern Config *config;
 
+
 Collision_box *collisions_arr[8096];
 Uint32 ca_len = 0;
 
@@ -98,6 +99,7 @@ static col_order ENEMY_SHIELD_COL(int a, int b) {
 }
 
 void player_hit(int p) {
+    return;
   // do something less severe...a
   config->players[p] = config->players[config->activePlayers - 1];
   config->activePlayers--;

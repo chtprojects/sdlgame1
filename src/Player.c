@@ -31,15 +31,24 @@ Player Player_init(V2 center, double width, double height) {
   return p;
 }
 
-void Player_move(Player *p, V2 vel) { p->vel = V2mul(vel, p->speed); }
+void Player_move(Player *p, V2 vel) {
+    p->vel = V2mul(vel, p->speed);
+}
 
 void Player_render(const Player *p) {
   Engine_glColor3f(1.0, 0.0, 0.0);
   Quad_render(&p->box.box);
 }
 void Player_update(Player *p, int screenW, int screenH) {
-  if (!p->move)
-    return;
-  p->box.box.tl = V2add(p->box.box.tl, p->vel);
+    if (!p->move)
+        return;
+
+    p->box.box.tl = V2add(p->box.box.tl, p->vel);
+
+    if (p->box.box.tl.x < 0) p->box.box.tl.x = 0;
+    else if (p->box.box.tl.x + p->box.box.w > screenW) p->box.box.tl.x = screenW - p->box.box.w;
+    if (p->box.box.tl.y < 0) p->box.box.tl.y = 0;
+    else if (p->box.box.tl.y + p->box.box.h > screenH) p->box.box.tl.y = screenH - p->box.box.h;
 }
+
 void Player_free(Player *p) { free(p); }

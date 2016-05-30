@@ -5,13 +5,6 @@
 
 #include "engine_desktop.h"
 
-/*
-    x,y----------x+w,y
-     |
-     |
-    x,y+h--------x+w,y+h
- */
-
 double angleBetween(V2 a, V2 b) {
   return atan2(b.y - a.y, b.x - a.x) * RAD_TO_DEG;
 }
@@ -87,10 +80,11 @@ void Quad_render(const Quad *q) {
   float bry = centerY +
               ((q->tl.x + q->h - centerX) * s + (q->tl.y + q->w - centerY) * c);
 
-  Engine_glBegin(GL_TRIANGLE_STRIP);
+  Engine_glBegin(GL_QUADS);
   Engine_glVertex3f(tlx, tly, 0.0); // tl
   Engine_glVertex3f(blx, bly, 0.0); // bl
-  Engine_glVertex3f(trx, try, 0.0); // tr
   Engine_glVertex3f(brx, bry, 0.0); // br
+  Engine_glVertex3f(trx, try, 0.0); // tr
+
   Engine_glEnd();
 }
