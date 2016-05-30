@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#define PI 3.14159265
 
 int leftKeyPressed = 0;
 int upKeyPressed = 0;
@@ -113,7 +112,7 @@ void set_angle_from_controller(Config *c, SDL_Event event) {
         yRotationDir = -value;
       else
         return;
-      double angle = atan2(yRotationDir, xRotationDir) * (180.0 / PI);
+      double angle = atan2(yRotationDir, xRotationDir) * RAD_TO_DEG;
       if (xRotationDir == 0 && yRotationDir == 0) {
         c->players[i].isShooting = 0;
       } else {

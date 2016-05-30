@@ -16,12 +16,11 @@ Shield *Shield_init(V2 center, V2 vel, GLfloat radius, int frags) {
   s->vel = vel;
   s->radius = radius;
   s->used = 16;
-#define PI 3.14159265
-  float steps = 2. * PI / (float)s->used;
+  float steps = 2. * M_PI / (float)s->used;
   SDL_Log("Shield_init using %d steps", s->used);
   int i;
   float p;
-  for (i = 0, p = 0.0; p < 2 * PI; p += steps, i++) {
+  for (i = 0, p = 0.0; p < 2 * M_PI; p += steps, i++) {
     s->cboxes[i].box = Quad_from(V2minus(center, (V2){5, 5}), 10, 10);
     s->cboxes[i].owner = SHIELD_OWNER;
     s->cboxes[i].ownerIdx = i;

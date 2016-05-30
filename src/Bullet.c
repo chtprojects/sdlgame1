@@ -7,16 +7,12 @@
 #include "engine_desktop.h"
 #include "globals.h"
 
-#define PI 3.14159265
-
 extern Config *config;
 
 static void set_movement(Bullet *bullets, int position, float angle,
                          float speed) {
-  double val = PI / 180;
-
-  float s = sin(angle * val);
-  float c = cos(angle * val);
+  float s = sin(angle * DEG_TO_RAD);
+  float c = cos(angle * DEG_TO_RAD);
 
   if (position > 200)
     abort();

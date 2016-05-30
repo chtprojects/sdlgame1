@@ -12,10 +12,8 @@
     x,y+h--------x+w,y+h
  */
 
-static const double DEG2RAD = 180.0 / M_PI;
-
 double angleBetween(V2 a, V2 b) {
-  return atan2(b.y - a.y, b.x - a.x) * DEG2RAD;
+  return atan2(b.y - a.y, b.x - a.x) * RAD_TO_DEG;
 }
 
 double distanceBetween(V2 a, V2 b) {

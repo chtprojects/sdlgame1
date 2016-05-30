@@ -5,6 +5,7 @@
 #include <math.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
+#include <GLUT/glut.h>
 
 #include "engine_desktop.h"
 
@@ -26,7 +27,6 @@
 #include "Collision.h"
 
 #define APPNAME "SDL"
-#define PI 3.14159265
 
 Config *config;
 
@@ -177,15 +177,7 @@ void update_objects() {
                    config->window_height);
 }
 
-void Background_render(V2 topLeft, double w, double h, float r, float g,
-                       float b) {
-  Engine_glColor3f(r, g, b);
-  glRectd(topLeft.x, topLeft.y, topLeft.x + w, topLeft.y + h);
-}
-
 void render_objects() {
-  Background_render((V2){0.0, 0.0}, config->window_width, config->window_height,
-                    0.2, 0.2, 0.2);
   Player_render(&config->players[0]);
   Enemy_render(config->enemies);
   Bullet_render(config->bullets);

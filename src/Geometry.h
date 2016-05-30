@@ -1,7 +1,18 @@
 #ifndef GEOMETRY_H
 #define GEOMETRY_H
 
+#include <math.h>
+
 typedef struct s_v2 { double x, y; } V2;
+
+#ifndef M_PI
+// Source: http://www.geom.uiuc.edu/~huberty/math5337/groupe/digits.html
+#define M_PI                                                                   \
+  3.141592653589793238462643383279502884197169399375105820974944592307816406
+#endif
+
+#define DEG_TO_RAD (M_PI / 180.0)
+#define RAD_TO_DEG (180.0 / M_PI)
 
 V2 V2add(const V2 a, const V2 b);
 V2 V2minus(const V2 a, const V2 b);

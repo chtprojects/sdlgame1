@@ -5,8 +5,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define PI 3.14159265
-
 static int TINY_COUNT = 3;
 static int SMALL_COUNT = 10;
 static int MEDIUM_COUNT = 30;
@@ -20,11 +18,8 @@ static void set_spiral_movement(Particle *p, float angle, float speed) {
 }
 
 static void set_movement(Particle *p, float angle, float speed) {
-
-  double val = PI / 180;
-
-  float s = sin(angle * val);
-  float c = cos(angle * val);
+  float s = sin(angle * DEG_TO_RAD);
+  float c = cos(angle * DEG_TO_RAD);
 
   p->moveX = speed * c * -1;
   p->moveY = speed * s * -1;
@@ -129,7 +124,8 @@ void Explosion_update(Explosion *explosions, int width, int height) {
         long elapsed = current - p->creationTime;
         float percent = (float)elapsed / p->lifeTime;
         Particle_move(p,
-                      2 * PI * percent); // todo need better time base movement
+                      2 * M_PI *
+                          percent); // todo need better time base movement
       } else {
         if (p->position.y < 0 || p->position.y > height)
           p->moveY = -p->moveY;

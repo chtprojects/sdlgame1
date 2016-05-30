@@ -2,6 +2,7 @@
 #include "Geometry.h"
 #include "engine_desktop.h"
 #include "globals.h"
+#include "Geometry.h"
 #include <math.h>
 #include <SDL2/SDL.h>
 
@@ -12,10 +13,8 @@ static float enemySize = 20;
 extern Config *config;
 
 static void Enemy_move_from_angle(Enemy *enemies, int index, float angle) {
-  double val = M_PI / 180.0;
-
-  float s = sin(angle * val);
-  float c = cos(angle * val);
+  float s = sin(angle * DEG_TO_RAD);
+  float c = cos(angle * DEG_TO_RAD);
 
   enemies[index].vel = (V2){speed * c * -1, speed * s * -1};
 }
